@@ -36,6 +36,15 @@ CrossMorph >> horizontalBar [
 	^ self bounds insetBy: 0 @ crossHeight
 ]
 
+{ #category : #'event handling' }
+CrossMorph >> mouseDown: anEvent [
+	anEvent redButtonPressed
+		ifTrue: [ self color: Color red ].	"click"
+	anEvent yellowButtonPressed
+		ifTrue: [ self color: Color yellow ].	"action-click"
+	self changed
+]
+
 { #category : #private }
 CrossMorph >> verticalBar [
 	| crossWidth |
