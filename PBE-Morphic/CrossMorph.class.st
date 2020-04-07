@@ -25,7 +25,26 @@ CrossMorph >> drawOn: aCanvas [
 ]
 
 { #category : #'event handling' }
+CrossMorph >> handleKeystroke: anEvent [
+	| keyValue |
+	keyValue := anEvent keyValue.
+	keyValue = 30	 "up arrow"
+		ifTrue: [self position: self position - (0 @ 1)].
+	keyValue = 31	 "down arrow"
+		ifTrue: [self position: self position + (0 @ 1)].
+	keyValue = 29	 "right arrow"
+		ifTrue: [self position: self position + (1 @ 0)].
+	keyValue = 28	 "left arrow"
+		ifTrue: [self position: self position - (1 @ 0)]
+]
+
+{ #category : #'event handling' }
 CrossMorph >> handlesMouseDown: anEvent [
+	^ true
+]
+
+{ #category : #'event handling' }
+CrossMorph >> handlesMouseOver: anEvent [
 	^ true
 ]
 
@@ -43,6 +62,16 @@ CrossMorph >> mouseDown: anEvent [
 	anEvent yellowButtonPressed
 		ifTrue: [ self color: Color yellow ].	"action-click"
 	self changed
+]
+
+{ #category : #'event handling' }
+CrossMorph >> mouseEnter: anEvent [
+	anEvent hand newKeyboardFocus: self
+]
+
+{ #category : #'event handling' }
+CrossMorph >> mouseLeave: anEvent [
+	anEvent hand newKeyboardFocus: nil
 ]
 
 { #category : #private }
