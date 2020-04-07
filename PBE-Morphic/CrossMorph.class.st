@@ -1,5 +1,9 @@
 "
 CrossMorph new openInWorld
+
+CrossMorph new openInWorld;
+   bounds: (0@0 corner: 200@200);
+   color: (Color blue alpha: 0.4)
 "
 Class {
 	#name : #CrossMorph,
