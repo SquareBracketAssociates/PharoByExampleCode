@@ -55,6 +55,12 @@ CrossMorph >> horizontalBar [
 	^ self bounds insetBy: 0 @ crossHeight
 ]
 
+{ #category : #initialization }
+CrossMorph >> initialize [
+	super initialize.
+	self startStepping
+]
+
 { #category : #'event handling' }
 CrossMorph >> mouseDown: anEvent [
 	anEvent redButtonPressed
@@ -72,6 +78,18 @@ CrossMorph >> mouseEnter: anEvent [
 { #category : #'event handling' }
 CrossMorph >> mouseLeave: anEvent [
 	anEvent hand newKeyboardFocus: nil
+]
+
+{ #category : #stepping }
+CrossMorph >> step [
+	(self color diff: Color black) < 0.1
+		ifTrue: [ self color: Color red ]
+		ifFalse: [ self color: self color darker ]
+]
+
+{ #category : #stepping }
+CrossMorph >> stepTime [
+	^ 100
 ]
 
 { #category : #private }
