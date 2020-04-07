@@ -24,6 +24,11 @@ CrossMorph >> drawOn: aCanvas [
 	topAndBottom do: [ :each | aCanvas fillRectangle: each color: self color ]
 ]
 
+{ #category : #'event handling' }
+CrossMorph >> handlesMouseDown: anEvent [
+	^ true
+]
+
 { #category : #private }
 CrossMorph >> horizontalBar [
 	| crossHeight |
